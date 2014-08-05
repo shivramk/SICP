@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\begin{document}
+
+Let $\phi=\frac{1+\sqrt{5}}{2}$ and $\psi=\frac{1-\sqrt{5}}{2}$. We will prove that \( Fib(n) = \frac{\phi^n - \psi^n}{\sqrt{5}} \) using mathematical induction. \\
+
+1. In the base case
+\begin{align}
+Fib (n) &= \frac{\phi - \psi}{\sqrt{5}} \\ 
+& = \frac{\frac{1+\sqrt{5}}{2} - \frac{1-\sqrt{5}}{2}}{\sqrt{5}} \\
+& = \frac{1+\sqrt{5}-1+\sqrt{5}}{2\sqrt{5}} \\
+& = 1
+\end{align}
+
+2. Lets assume that \(Fib(k) = \frac{\phi^k - \psi^k}{\sqrt{5}} \) \\
+
+3. Consider \(Fib(k) + Fib(k-1) \)
+\begin{align}
+Fib(k) + Fib(k-1) &=  \frac{\phi^k - \psi^k}{\sqrt{5}} + \frac{\phi^{k-1} - \psi^{k-1}}{\sqrt{5}} \\
+& = \frac{1}{\sqrt{5}} (\phi^{k+1}(\frac{1}{\phi} + \frac{1}{\phi^2}) - \psi^{k+1}(\frac{1}{\psi} + \frac{1}{\psi^2}))
+\end{align}
+
+We know that $\phi$ and $\psi$ are the roots of the equation \(x^2 - x - 1 = 0 \), which means
+\begin{align}
+\phi^2 - \phi - 1 &= 0 \\
+\phi + 1 = \phi^2 \\
+\frac{1}{\phi} + \frac{1}{\phi^2} = 1 
+\end{align}
+
+Similarly \( \frac{1}{\psi} + \frac{1}{\psi^2} = 1 \). Substituting in $(6)$ gives us
+\begin{align}
+Fib(k) + Fib(k-1) &= \frac{1}{\sqrt{5}} (\phi^{k+1} - \psi^{k+1}) \\
+& = Fib(k+1)
+\end{align}
+
+For larger values of n the second term \( \psi^n \) can be ignored. Which gives us 
+\begin{align}
+Fib(n) &= \frac{\phi^n}{\sqrt{5}}
+\end{align}
+\end{document}

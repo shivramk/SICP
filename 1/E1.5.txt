@@ -1,0 +1,4 @@
+In applicative order evaluation the procecure p would go into infinite 
+recursion.
+
+In normal order evaluation the expression would evaluate to 0 as p would not be evaluated.

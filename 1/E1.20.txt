@@ -1,0 +1,21 @@
+(define (gcd a b)
+    (if (= b 0)
+         a
+        (gcd b (remainder a b))))
+
+In the applicative order
+
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 40 6)
+(gcd 6 (remainder 40 6))
+(gcd 6 4)
+(gcd 4 (remainder 6 4))
+(gcd 4 2)
+(gcd 2 (remainder 4 2))
+(gcd 2 0)
+
+There are 4 remainder operations performed.
+
+The normal order will be the same as the applicative order because the if 
+condition will force the remainder operation to be performed.

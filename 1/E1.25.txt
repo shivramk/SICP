@@ -1,0 +1,14 @@
+(define (expmod base exp m)
+   (remainder (fast-expt base exp) m))
+
+The procedure expmod is actually optimized for performing the fermat test, 
+in that it takes the modulo at each step of the exponentiation. This means
+that the result at any stage can only be as large as `m`. 
+
+The fast-expt procedure on the other hand is a generic exponentiation procedure
+and will compture the result first (however big). This might give us problems
+because the result may be too large for the system to handle (in scheme systems
+with limited precision). Even in scheme implementations will arbitrary precision
+the fast-expt procedure will certainly take longer than expmod.
+
+So in the case of the fermat test the expmod procdure is the right choice.

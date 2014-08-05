@@ -1,0 +1,76 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,listings}
+\begin{document}
+
+\noindent Consider the given code
+
+\lstset{
+language=Lisp,                            
+basicstyle=\ttfamily,  
+}
+
+\begin{lstlisting}
+(define (expmod base exp m)
+ (cond ((= exp 0) 1)
+  ((even? exp) (remainder 
+      (* (expmod base (/ exp 2) m)
+         (expmod base (/ exp 2) m)) m))
+  (else (remainder 
+      (* base (expmod base (- exp 1) m)) m))))
+\end{lstlisting}
+
+\bigskip\noindent The problem here is the multiplication of \texttt{(expmod base (/ exp 2) m)} by itself.
+If the square function were being used, the expression \texttt{(expmod base (/ exp 2) m)}
+would be evaluated only once. But now it is being evaluated twice. This changes
+the complexity from $O(log(n))$ to $O(n)$
+
+\bigskip\noindent Proof by example
+
+1. In the base case where exp = 0
+\begin{align}
+steps(0) &= 1 
+\end{align}
+
+2. When exp = 1
+\begin{align}
+steps(1) &= 2
+\end{align}
+
+3. For exp = 2
+\begin{align}
+steps(2) &= 2 * steps(1) \\
+& = 2 * 2 \\
+& = 4
+\end{align}
+                  
+4. For exp = n
+\begin{align}
+steps &= 2 * (steps(n-1)) \\
+& = 2 * n \\
+& = 2n
+\end{align}
+
+Hence the order of growth is $\Theta(n)$
+
+\bigskip\noindent Proof by master method
+
+1. The recurrence relation for the order of growth of this process can be
+written as
+\begin{align}T(n) = aT(n/b) + f(n)\end{align}
+
+2. In this case (where $a=2, b=2$ and $f(n)=k$ where k is a constant)
+\begin{align}T(n) = 2T(n/2) + k\end{align}
+
+3. The master method says that if
+               $f(n) = O(n^{(\log_b{a}-\epsilon)})$ for some constant $\epsilon > 0$ then
+               $T(n) = \Theta(n^{\log_b{a}})$
+               
+4. Subtituting the values of a and b we get
+\begin{align}
+T(n) &= \Theta(n^{\log_b{a}}) \\
+& = \Theta(n^{\log_2{2}}) \\
+& = \Theta(n^1) \\
+& = \Theta(n)
+\end{align}
+
+\end{document}
