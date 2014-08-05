@@ -46,5 +46,5 @@
 (define (factorial2 n)
   (product2 id 1 inc n))
 
-(factorial 5) ; 120
-(factorial 10) ; 3628800
+(factorial2 5) ; 120
+(factorial2 10) ; 3628800
