@@ -1,4 +1,5 @@
 SICP
 ====
 
-My solutions to excercises in SICP (Structure and Interpretation of Computer Programs)
+My solutions to SICP (Structure and Interpretation of Computer Programs) 
+exercises. 
