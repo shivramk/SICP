@@ -61,7 +61,7 @@ written as
 2. In this case (where $a=2, b=2$ and $f(n)=k$ where k is a constant)
 \begin{align}T(n) = 2T(n/2) + k\end{align}
 
-3. The master method says that if
+3. The master method \cite[section 4.5]{cormen2009} says that if
                $f(n) = O(n^{(\log_b{a}-\epsilon)})$ for some constant $\epsilon > 0$ then
                $T(n) = \Theta(n^{\log_b{a}})$
                
@@ -72,5 +72,16 @@ T(n) &= \Theta(n^{\log_b{a}}) \\
 & = \Theta(n^1) \\
 & = \Theta(n)
 \end{align}
+
+\begin{thebibliography}{9}
+
+\bibitem{cormen2009}
+  Cormen et al.,
+  \emph{Introduction to Algorithms}.
+  MIT Press, Massachusetts,
+  3rd edition,
+  2009.
+
+\end{thebibliography}
 
 \end{document}
