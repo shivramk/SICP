@@ -1,0 +1,42 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,listings}
+\begin{document}
+
+\lstset{
+language=Lisp,
+basicstyle=\ttfamily,
+}
+
+Consider the equation
+\begin{align}
+    x &= 1 + \frac{1}{x}
+\end{align}
+
+Multiplying by x on both sides
+\begin{align}
+    x^2 &= x + 1 \\
+    x^2 -x - 1 & = 0
+\end{align}
+
+This is a quadratic equation whose roots are give by 
+\begin{align}
+\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\end{align}
+
+Subtituting the values $a=1, b=-1, c=-1$ we get
+\begin{align}
+    x &= \frac{-(-1) \pm \sqrt{(-1)^2 - 4(1)(-1)}}{2(1)} \\
+    x & = \frac{1 \pm \sqrt{5}}{2} \\
+    x & = \frac{1 + \sqrt{5}}{2}, \frac{1 - \sqrt{5}}{2} \\ 
+    x & = \phi, \psi
+\end{align}
+
+\bigskip To compute the value of $\phi$ all we have to do is
+
+\begin{lstlisting}
+(fixed-point (lambda (x) (+ 1 (/ 1 x))) 1.0)
+
+1.6180327868852458
+\end{lstlisting}
+
+\end{document}
