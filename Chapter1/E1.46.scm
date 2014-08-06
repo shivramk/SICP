@@ -40,4 +40,4 @@
 
 (sqrt2 64) ; should be 8
 (sqrt2 81) ; should be 9
-(sqrt 0.04) ; should be 0.2
+(sqrt2 0.04) ; should be 0.2
