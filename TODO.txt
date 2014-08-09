@@ -1,0 +1,8 @@
+TODO
+====
+
+1.14 - Use graphwhiz to generate call tree.
+1.24 - Profile the code to see why fast-prime? Is actually slower than the 
+       other prime function.
+2.16 - This is apparently a very difficult problem. Attempt this later.
+
