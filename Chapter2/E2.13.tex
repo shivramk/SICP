@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,listings}
+\begin{document}
+
+Let each interval $i$ be represented by the pair $(l, u)$ where $l$ is the lower bound and $u$ is the upper bound\\
+
+Let the center be defined as $c = \frac{(u+l)}{2}$ \\ and the tolerance factor as $f = \frac{(u-c)}{c}$ \\
+
+Consider the multiplication of two intervals $i_1=(x-d_1, x + d_1)$ and $i_2=(y-d_2, y-d_2)$ where $x$ is the center of $i_1$ and $d_1 = f_1 * x$, and $y$ is the center of $i_2$ and $d_2 = f_2 * y$. We assume that all values are positive.
+
+\begin{align}
+i_1*i_2 &= (xy - xd_2 - yd_1 + d_1d_2, xy + xd_2 + y_d1 + d_1d_2) \\
+\end{align}
+
+Now consider the center of the product
+\begin{align}
+c &= \frac{u+l}{2} \\
+  & = \frac{xy - xd_2 - yd_1 + d_1d_2 + xy + xd_2 + y_d1 + d_1d_2}{2} \\ 
+  & = \frac{2xy + 2d_1d_2}{2} \\
+  & = xy + d_1d_2
+\end{align}
+
+The percentage factor will be
+\begin{align}
+f &= \frac{(u-c)}{c} \\
+  & = \frac{xy + xd_2 + yd_1 + d_1d_2 - xy -d_1d_2}{xy + d_1d_2} \\
+  & = \frac{xd_2 + yd_1}{xy + d_1d_2}
+\end{align}
+
+Given that the tolerances are small the product $d_1d_2$ can be ignored.
+\begin{align}
+f &= \frac{xd_2}{xy} + \frac{yd_1}{xy} \\
+  & = \frac{d_2}{y} + \frac{d_1}{x} \\
+f & = f_2 + f_1
+\end{align}
+
+Therefore, for small tolerances the percentage tolerance of the product approximately equals the sum of the percentage tolerances of the factors.
+
+\end{document}
