@@ -1,0 +1,13 @@
+Louis Reasoners has interchanged the order of the nested map. Instead of
+computing (queen-cols (-k 1)) once and iterting over 1 to boardsize, the 
+(queen-cols (-k 1)) will now get computed board size times. 
+
+For (queens 8) this means that (queen-cols (-k 1)) gets computed 8 times
+in each call to queen-cols. If the original version takes time T then the new
+version will roughly take
+
+      T(new) = 8 * 8 * 8 ... (8 times) * T
+             = 8 ^ 8 T
+
+Although this isn't exactly correct because there are other computations in 
+there whose runtime depends on the value of k.
