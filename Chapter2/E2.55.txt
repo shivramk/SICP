@@ -1,0 +1,6 @@
+(car ''abracadabra) is just syntactic sugar for
+
+(car (quote (quote abracadabra))) which evaluates to
+
+(car '(quote abracadra)) which is nothing but `quote`
+
