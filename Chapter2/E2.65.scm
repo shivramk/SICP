@@ -7,7 +7,7 @@
   (list entry left right))
 
 (define (element-of-set? x set)
-  (cond ((null? set) #f)
+  (cond ((null? set) false)
         ((= x (entry set)) true)
         ((< x (entry set))
          (element-of-set? x (left-branch set)))
