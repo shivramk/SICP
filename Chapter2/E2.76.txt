@@ -1,0 +1,37 @@
+Changes required to system based on organization:
+
+1. Generic operations with explicit dispatch
+   a. To add a new type - Constructors and selectors must be defined for the
+      new type. In addition, the all generic selectors must be modified to
+      understand the new type
+   b. To add a new operation - The selector must be added to each existing
+      type. A new generic selector must also be defined
+
+2. Data directed style
+   a. To add a new type - Constructors and selectors must be defined for the
+      new type and the type needs to be installed via the put operation
+   b. To add a new operation - A selector must be added to each existing type
+      and installed via the put operation. A new generic selector must also be
+      defined
+
+3. Message passing style
+   a. To add a new type - A constructor must be defined for the new type,
+      which internally will dispatch to each selector. The selectors also need
+      to be defined
+   b. To add a new operation - The constructor for each type needs to be
+      modified to include the new operation. A new generic selector must also
+      be defined
+
+Which organization would be most appropriate for a system in which:
+
+1. New types must be added often - This is done best using the message passing
+   style since the existing types don't need to be touched. There is no need to
+   install the type via a put operation
+
+2. New operations must be added often - This is best done using the data
+   directed style, because existing objects don't need to be modified, only
+   the selector needs to be defined and installed via put. In message passing 
+   style all constructors have to be modified to understand the new selector
+
+The "generic operations with explicit dispatch" approach is inferior in both
+cases
