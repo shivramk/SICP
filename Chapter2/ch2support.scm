@@ -1,4 +1,20 @@
-;; Borrowed from http://mitpress.mit.edu/sicp/code/ch2support.scm
+;; Taken from http://mitpress.mit.edu/sicp/code/ch2support.scm
+
+;;; CODE FROM OTHER CHAPTERS OF STRUCTURE AND INTERPRETATION OF
+;;;  COMPUTER PROGRAMS NEEDED BY CHAPTER 2
+
+;;;from chapter 1
+(define (square x) (* x x))
+
+;;;from section 1.2.2, for Section 2.2.3
+(define (fib n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (else (+ (fib (- n 1))
+                 (fib (- n 2))))))
+
+;;; ***not in book, but needed for code before quote is introduced*** 
+(define nil '())
 
 ;;;-----------
 ;;;from section 3.3.3 for section 2.4.3
