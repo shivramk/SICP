@@ -1,0 +1,5 @@
+;; chicken scheme rc file. place in ~/.csirc
+
+;; definitions needed for SICP
+(define true #t)
+(define false #f)
