@@ -1,4 +1,13 @@
-#lang planet neil/sicp
+(include "ch2support.scm")
+
+;; Support functions for deriv
+(define (variable? x) (symbol? x))
+
+(define (same-variable? v1 v2)
+  (and (variable? v1) (variable? v2) (eq? v1 v2)))
+
+(define (=number? exp num)
+  (and (number? exp) (= exp num)))
 
 (define (deriv exp var) 
   (cond ((number? exp) 0)
@@ -15,57 +24,6 @@
 ;;    variables can take different values and with our current approach we would
 ;;    an entry for each value in a operation-and-type table. For numbers that 
 ;;    would mean having an entry for numbers 1 2 3 ... 
-
-;; Support functions for deriv
-(define (variable? x) (symbol? x))
-
-(define (same-variable? v1 v2)
-  (and (variable? v1) (variable? v2) (eq? v1 v2)))
-
-(define (=number? exp num)
-  (and (number? exp) (= exp num)))
-
-;; Support for put and get (provided by SICP authors in ch2support.scm)
-;; http://mitpress.mit.edu/sicp/code/ch2support.scm
-(define (assoc key records)
-  (cond ((null? records) false)
-        ((equal? key (caar records)) (car records))
-        (else (assoc key (cdr records)))))
-
-(define (make-table)
-  (let ((local-table (list '*table*)))
-    (define (lookup key-1 key-2)
-      (let ((subtable (assoc key-1 (cdr local-table))))
-        (if subtable
-            (let ((record (assoc key-2 (cdr subtable))))
-              (if record
-                  (cdr record)
-                  false))
-            false)))
-    (define (insert! key-1 key-2 value)
-      (let ((subtable (assoc key-1 (cdr local-table))))
-        (if subtable
-            (let ((record (assoc key-2 (cdr subtable))))
-              (if record
-                  (set-cdr! record value)
-                  (set-cdr! subtable
-                            (cons (cons key-2 value)
-                                  (cdr subtable)))))
-            (set-cdr! local-table
-                      (cons (list key-1
-                                  (cons key-2 value))
-                            (cdr local-table)))))
-      'ok)    
-    (define (dispatch m)
-      (cond ((eq? m 'lookup-proc) lookup)
-            ((eq? m 'insert-proc!) insert!)
-            (else (error "Unknown operation -- TABLE" m))))
-    dispatch))
-
-(define operation-table (make-table))
-(define get (operation-table 'lookup-proc))
-(define put (operation-table 'insert-proc!))
-
 
 ; b & c. Procedures for sums, products and exponentiation
 (define (install-deriv-package)

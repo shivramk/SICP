@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define (apply-generic op arg) (arg op))
 
 (define PI 3.141592653589793)
