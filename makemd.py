@@ -59,7 +59,10 @@ def generate(toc, writer):
         writer.h2(name)
         for problem in problems:
             files = glob.glob(os.path.join(folder, "E%s.%s.*" % (chapter, problem)))
-            if len(files) != 1:
+            if len(files) == 0:
+                print "Warning: No solution found for exercise %d.%d" % (chapter, problem)
+                continue
+            elif len(files) != 1:
                 print "Warning: Found %s files for problem %d. Expecting 1" % (
                         len(files), problem, repr(files))
             print "Processing:", files[0]
