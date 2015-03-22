@@ -3,23 +3,23 @@ ARGS=-f markdown+fenced_code_attributes+fenced_code_blocks
 BOOKNAME=sicpanswers
 
 SOURCES = Chapter1/E1.1.scm \
-	Chapter1/E1.10.txt \
+	Chapter1/E1.10.md \
 	Chapter1/E1.11.scm \
 	Chapter1/E1.12.scm \
 	Chapter1/E1.13.tex \
-	Chapter1/E1.14.txt \
-	Chapter1/E1.15.txt \
+	Chapter1/E1.14.md \
+	Chapter1/E1.15.md \
 	Chapter1/E1.16.scm \
 	Chapter1/E1.17.scm \
 	Chapter1/E1.18.scm \
 	Chapter1/E1.19.scm \
 	Chapter1/E1.2.scm \
-	Chapter1/E1.20.txt \
+	Chapter1/E1.20.md \
 	Chapter1/E1.21.scm \
 	Chapter1/E1.22.scm \
 	Chapter1/E1.23.scm \
 	Chapter1/E1.24.scm \
-	Chapter1/E1.25.txt \
+	Chapter1/E1.25.md \
 	Chapter1/E1.26.tex \
 	Chapter1/E1.27.scm \
 	Chapter1/E1.28.scm \
@@ -35,7 +35,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter1/E1.37.scm \
 	Chapter1/E1.38.scm \
 	Chapter1/E1.39.scm \
-	Chapter1/E1.4.txt \
+	Chapter1/E1.4.md \
 	Chapter1/E1.40.scm \
 	Chapter1/E1.41.scm \
 	Chapter1/E1.42.scm \
@@ -43,18 +43,18 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter1/E1.44.scm \
 	Chapter1/E1.45.scm \
 	Chapter1/E1.46.scm \
-	Chapter1/E1.5.txt \
-	Chapter1/E1.6.txt \
+	Chapter1/E1.5.md \
+	Chapter1/E1.6.md \
 	Chapter1/E1.7.scm \
 	Chapter1/E1.8.scm \
-	Chapter1/E1.9.txt \
+	Chapter1/E1.9.md \
 	Chapter2/E2.1.scm \
 	Chapter2/E2.10.scm \
 	Chapter2/E2.11.scm \
 	Chapter2/E2.12.scm \
 	Chapter2/E2.13.tex \
 	Chapter2/E2.14.scm \
-	Chapter2/E2.15.txt \
+	Chapter2/E2.15.md \
 	Chapter2/E2.17.scm \
 	Chapter2/E2.18.scm \
 	Chapter2/E2.19.scm \
@@ -84,7 +84,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.40.scm \
 	Chapter2/E2.41.scm \
 	Chapter2/E2.42.scm \
-	Chapter2/E2.43.txt \
+	Chapter2/E2.43.md \
 	Chapter2/E2.44.scm \
 	Chapter2/E2.45.scm \
 	Chapter2/E2.46.scm \
@@ -97,7 +97,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.52.scm \
 	Chapter2/E2.53.scm \
 	Chapter2/E2.54.scm \
-	Chapter2/E2.55.txt \
+	Chapter2/E2.55.md \
 	Chapter2/E2.56.scm \
 	Chapter2/E2.57.scm \
 	Chapter2/E2.58.scm \
@@ -120,7 +120,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.73.scm \
 	Chapter2/E2.74.scm \
 	Chapter2/E2.75.scm \
-	Chapter2/E2.76.txt \
+	Chapter2/E2.76.md \
 	Chapter2/E2.77.scm \
 	Chapter2/E2.78.scm \
 	Chapter2/E2.79.scm \

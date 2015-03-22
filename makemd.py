@@ -36,6 +36,9 @@ class PandocMarkdownWriter(object):
         self.f.write(programtext)
         self.f.write("\n" + "~" * 20 + "\n")
 
+    def verbatim(self, text):
+        self.f.write("\n" + text + "\n")
+
 def read_contents(filepath):
     with open(filepath) as f:
         return f.read()
@@ -46,6 +49,8 @@ def add_solution(writer, chapter, problem, filepath):
     ext = ext.lower()
     if ext == ".scm":
         writer.code(read_contents(filepath), "scheme", False)
+    elif ext == ".md":
+        writer.verbatim(read_contents(filepath))
     else:
         print "Warning: Dont know how to handle file '%s' of type: '%s'" % (
                 filepath, ext)
