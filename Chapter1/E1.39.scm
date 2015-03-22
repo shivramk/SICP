@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; iterative version of cont-frac 
 ; Start from the lowermost n/d and work our way upwards
 (define (cont-frac n d k)

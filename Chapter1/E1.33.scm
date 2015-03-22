@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; iterative version of filtered-accumulate
 (define (filtered-accumulate predicate? combiner null-value term a next b)
   (define (iter a result)

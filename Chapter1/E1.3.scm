@@ -1,5 +1,3 @@
-#lang racket
-
 (define (square x) (* x x))
 
 (define (max a b)
@@ -12,4 +10,5 @@
      (square (cond ((= a (max3 a b c)) (max b c))
                    ((= b (max3 a b c)) (max a c))
                    (else (max a b))))))
-                 
+
+(maxsqsum 8 4 6) ; 100

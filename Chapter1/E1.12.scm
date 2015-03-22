@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; r, c is row and column
 ; indexing starts from 1
 

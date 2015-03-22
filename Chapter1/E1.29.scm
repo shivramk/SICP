@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define (sum term a next b)
   (if (> a b)
       0

@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define tolerance 0.00001)
 
 (define (square x) (* x x))

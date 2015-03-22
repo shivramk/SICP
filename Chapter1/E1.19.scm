@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; a = bq + aq + ap
 ; b = bp + aq
 ;

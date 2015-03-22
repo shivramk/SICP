@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define dx 0.00001)
 
 (define (average a b c) (/ (+ a b c) 3.0))

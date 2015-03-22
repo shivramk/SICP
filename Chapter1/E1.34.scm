@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define (square x) (* x x))
 (define (f g) (g 2))
 

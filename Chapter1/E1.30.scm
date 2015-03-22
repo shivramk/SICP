@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; iterative version of sum
 (define (sum term a next b)
   (define (iter a result)

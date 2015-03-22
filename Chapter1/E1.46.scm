@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define (iterative-improve good-enough? improve-guess)
   (define (try guess)
     (if (good-enough? guess)

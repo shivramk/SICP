@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; recursive process
 (define (f n)
   (if (< n 3) n

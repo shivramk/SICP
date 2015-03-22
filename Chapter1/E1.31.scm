@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; iterative version of product
 (define (product term a next b)
   (define (iter a result)

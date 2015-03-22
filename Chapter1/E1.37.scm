@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; recursive version of cont-frac
 (define (cont-frac n d k)
   (define (compute-cont-frac i)

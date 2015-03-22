@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 ; The good-enough test fails for small numbers. For example
 ; > (sqrt 0.0004)
 ; 0.0354008825558513

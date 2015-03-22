@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define (fast-expt b n)
   (define (fiter x y z)
     (cond ((= z 0) y)

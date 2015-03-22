@@ -1,5 +1,3 @@
-#lang planet neil/sicp
-
 (define (square y) (* y y))
 
 (define (average x y) (/ (+ x y) 2))
