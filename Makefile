@@ -137,10 +137,10 @@ $(BOOKNAME).pdf: $(BOOKNAME).md
 	$(PANDOC) $(ARGS) -s $< -o $@
 
 $(BOOKNAME).html: $(BOOKNAME).md
-	$(PANDOC) $(ARGS) -s $< -o $@
+	$(PANDOC) $(ARGS) --mathjax -s $< -o $@
 
 $(BOOKNAME).epub: $(BOOKNAME).md
-	$(PANDOC) $(ARGS) -s $< -o $@
+	$(PANDOC) $(ARGS) -t epub3 -s $< -o $@
 
 $(BOOKNAME).md: TOC.json makemd.py $(SOURCES)
 	python makemd.py TOC.json $(BOOKNAME).md
