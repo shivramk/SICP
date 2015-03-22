@@ -102,5 +102,3 @@
 ;; Give it a try
 (exp z1 z2)
 
-
-
