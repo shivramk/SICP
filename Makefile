@@ -128,13 +128,15 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.80.scm \
 	Chapter2/E2.81.scm \
 	Chapter2/E2.82.scm \
-	Chapter2/E2.9.tex
+	Chapter2/E2.9.tex \
+	Chapter3/E3.1.scm \
+	Chapter3/E3.2.scm
 
 
 all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
 
 $(BOOKNAME).pdf: $(BOOKNAME).md
-	$(PANDOC) $(ARGS) -s $< -o $@
+	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< -o $@
 
 $(BOOKNAME).html: $(BOOKNAME).md
 	$(PANDOC) $(ARGS) --mathjax -s $< -o $@
