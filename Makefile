@@ -130,7 +130,9 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.82.scm \
 	Chapter2/E2.9.tex \
 	Chapter3/E3.1.scm \
-	Chapter3/E3.2.scm
+	Chapter3/E3.2.scm \
+	Chapter3/E3.3.scm \
+	Chapter3/E3.4.scm
 
 
 all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
