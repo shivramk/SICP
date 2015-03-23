@@ -2,9 +2,16 @@ TODO
 ====
 
 1.14 - Use graphwhiz to generate call tree.
-1.24 - Profile the code to see why fast-prime? Is actually slower than the 
+1.24 - Profile the code to see why fast-prime? Is actually slower than the
        other prime function.
 2.16 - This is apparently a very difficult problem. Attempt this later.
 2.24 - Add labels to box and pointer notation (Refer to page 108 of SICP).
 2.43 - Needs more thorough analysis
 
+Miscellaneous
+-------------
+
+1. Write the build script in chicken-scheme
+2. Convert remaining latex files into pandoc markdown
+3. Process source code and use comments for generating markdown
+4. Add test cases
