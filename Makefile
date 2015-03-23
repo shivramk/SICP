@@ -6,7 +6,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter1/E1.10.md \
 	Chapter1/E1.11.scm \
 	Chapter1/E1.12.scm \
-	Chapter1/E1.13.tex \
+	Chapter1/E1.13.md \
 	Chapter1/E1.14.md \
 	Chapter1/E1.15.md \
 	Chapter1/E1.16.scm \
