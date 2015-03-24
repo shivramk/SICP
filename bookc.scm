@@ -67,8 +67,8 @@
            (display (sprintf "Warning: No solution found for exercise ~A.~A\n" 
                              chapter problem)))
           ((not (= flen 1))
-           (display (sprintf "Warning: Found ~A files for problem ~A. Expecting 1\n"
-                             flen problem)))
+           (error (sprintf "Found ~A files for problem ~A.~A. Expecting 1\n"
+                             flen chapter problem)))
           (else (begin 
                   (display (sprintf "Processing: ~A\n" (car files))) 
                   (add-solution output-port chapter problem (car files)))))))
