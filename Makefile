@@ -149,7 +149,7 @@ $(BOOKNAME).epub: $(BOOKNAME).md
 $(BOOKNAME).md: TOC.json bookc $(SOURCES)
 	./bookc TOC.json $(BOOKNAME).md
 
-bookc: build.scm
+bookc: bookc.scm
 	csc $< -o $@
 
 .PHONY: clean
