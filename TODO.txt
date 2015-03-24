@@ -10,7 +10,6 @@ TODO
 Miscellaneous
 -------------
 
-1. Write the build script in chicken-scheme
-2. Convert remaining latex files into pandoc markdown
-3. Process source code and use comments for generating markdown
-4. Add test cases
+1. Convert remaining latex files into pandoc markdown
+2. Process source code and use comments for generating markdown
+3. Add test cases
