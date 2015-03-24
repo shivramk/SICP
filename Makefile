@@ -146,9 +146,12 @@ $(BOOKNAME).html: $(BOOKNAME).md
 $(BOOKNAME).epub: $(BOOKNAME).md
 	$(PANDOC) $(ARGS) -t epub3 -s $< -o $@
 
-$(BOOKNAME).md: TOC.json makemd.py $(SOURCES)
-	python makemd.py TOC.json $(BOOKNAME).md
+$(BOOKNAME).md: TOC.json bookc $(SOURCES)
+	./bookc TOC.json $(BOOKNAME).md
+
+bookc: build.scm
+	csc $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f $(BOOKNAME).*
+	rm -f $(BOOKNAME).* bookc
