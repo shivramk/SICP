@@ -1,9 +1,9 @@
-; recursive process
+;; Recursive process
 (define (f n)
   (if (< n 3) n
       (+ (f (- n 1)) (* 2 (f (- n 2))) (* 3 (f (- n 3))))))
 
-; iterative process
+;; Iterative process
 (define (f2 n)
   (if (< n 3) n) (fiter 2 1 0 (- n 3)))
 

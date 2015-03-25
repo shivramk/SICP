@@ -52,12 +52,31 @@
 (define (verbatim output-port text)
   (write-string (string-append "\n" text "\n") #f output-port))
 
-(define (code output-port programtext lang number_lines)
-  (let ((nlines (if number_lines ".numberLines" "")))
-    (write-string (string-append 
-                    (string-repeat "~" 4) " {#mycode ." lang " " nlines "}\n"
-                    programtext "\n"
-                    (string-repeat "~" 20) "\n") #f output-port)))
+(define (source output-port text)
+  (define writing-code #f)
+  (define (end-code)
+    (write-string (string-append (string-repeat "~" 20) "\n") #f output-port)
+    (set! writing-code #f))
+  (define (start-code lang number_lines) 
+    (set! writing-code #t)
+    (let ((nlines (if number_lines ".numberLines" ""))) 
+      (write-string (string-append "\n"
+                    (string-repeat "~" 4) " {#mycode ." lang " " nlines "}\n")
+                    #f output-port)))
+  (define (write-markdown text)
+    (if writing-code
+      (begin (end-code)))
+    (write-string (string-append text "\n") #f output-port))
+  (define (write-code line)
+    (if (not writing-code)
+      (start-code "scheme" #f))
+    (write-string (string-append line "\n") #f output-port))
+  (let ((lines (string-split text "\n" #t)))
+    (map (lambda (line)
+           (if (eq? (substring-index ";; " line) 0)
+             (write-markdown (substring line 3))
+             (write-code line))) lines))
+  (if writing-code (end-code)))
 
 ;;; Book generation
 (define (proc-problem output-port folder chapter problem)
@@ -88,7 +107,7 @@
   (h3 output-port (sprintf "Problem ~A.~A" chapter problem))
   (let ((extlower (string-downcase ext)))
     (cond ((string=? extlower "scm") 
-           (code output-port (read-file-contents filepath) "scheme" #f))
+           (source output-port (read-file-contents filepath)))
           ((string=? extlower "md") 
            (verbatim output-port (read-file-contents filepath)))
           (else (display (sprintf 

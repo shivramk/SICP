@@ -208,11 +208,12 @@
 ;; (install-rectangular-package)
 ;; 
 ;; The call tree looks like this
-;; (magnitude z)
-;;  \_ (apply-generic 'magnitude (cons 'complex (cons 'rectangular (cons 3 4))))
-;;      \_ (magnitude (cons 'rectangular (cons 3 4)))
-;;          \_ (apply-generic 'magnitude (cons 'rectangular (cons 3 4)))
-;;              \_ (magnitude (cons 3 4)) -> 5 
+;; 
+;;     (magnitude z)
+;;      \_ (apply-generic 'magnitude (cons 'complex (cons 'rectangular (cons 3 4))))
+;;          \_ (magnitude (cons 'rectangular (cons 3 4)))
+;;              \_ (apply-generic 'magnitude (cons 'rectangular (cons 3 4)))
+;;                  \_ (magnitude (cons 3 4)) -> 5 
 ;; 
 ;; The final magnitude call belongs to (install-rectangular-package)
 ;; apply-generic gets call a couple of times
