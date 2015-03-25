@@ -65,7 +65,7 @@
                     #f output-port)))
   (define (write-markdown text)
     (if writing-code
-      (begin (end-code)))
+      (begin (end-code) (set! writing-code #f)))
     (write-string (string-append text "\n") #f output-port))
   (define (write-code line)
     (if (not writing-code)
