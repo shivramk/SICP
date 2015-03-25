@@ -73,9 +73,11 @@
     (write-string (string-append line "\n") #f output-port))
   (let ((lines (string-split text "\n" #t)))
     (map (lambda (line)
-           (if (eq? (substring-index ";; " line) 0)
-             (write-markdown (substring line 3))
-             (write-code line))) lines))
+           (cond ((eq? (substring-index ";; " line) 0) 
+                  (write-markdown (substring line 3)))
+                 ((eq? (substring-index ";;" line) 0) 
+                  (write-markdown ""))
+                 (else (write-code line)))) lines))
   (if writing-code (end-code)))
 
 ;;; Book generation
