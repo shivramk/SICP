@@ -128,7 +128,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.80.scm \
 	Chapter2/E2.81.scm \
 	Chapter2/E2.82.scm \
-	Chapter2/E2.9.tex \
+	Chapter2/E2.9.md \
 	Chapter3/E3.1.scm \
 	Chapter3/E3.2.scm \
 	Chapter3/E3.3.scm \
