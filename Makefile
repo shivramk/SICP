@@ -63,7 +63,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.21.scm \
 	Chapter2/E2.22.scm \
 	Chapter2/E2.23.scm \
-	Chapter2/E2.24.tex \
+	Chapter2/E2.24.md \
 	Chapter2/E2.25.scm \
 	Chapter2/E2.26.scm \
 	Chapter2/E2.27.scm \
