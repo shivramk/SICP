@@ -7,7 +7,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter1/E1.11.scm \
 	Chapter1/E1.12.scm \
 	Chapter1/E1.13.md \
-	Chapter1/E1.14.md \
+	Chapter1/E1.14.scm \
 	Chapter1/E1.15.md \
 	Chapter1/E1.16.scm \
 	Chapter1/E1.17.scm \
@@ -140,22 +140,37 @@ PDFSOURCES = Chapter2/images/E2_24_1.pdf \
 	Chapter2/images/E2_64_1.pdf \
 	Chapter2/images/E2_64_2.pdf \
 	Chapter2/images/E2_71_1.pdf \
-	Chapter2/images/E2_71_2.pdf
+	Chapter2/images/E2_71_2.pdf \
+	Chapter1/images/E1_14_1.pdf
 
 PNGSOURCES = Chapter2/images/E2_24_1.png \
 	Chapter2/images/E2_24_2.png \
 	Chapter2/images/E2_64_1.png \
 	Chapter2/images/E2_64_2.png \
 	Chapter2/images/E2_71_1.png \
-	Chapter2/images/E2_71_2.png
+	Chapter2/images/E2_71_2.png \
+	Chapter1/images/E1_14_1.png
+
+all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
 
 Chapter2/images/%.pdf: Chapter2/images/%.tex
 	pdflatex -output-directory Chapter2/images $<
 
-Chapter2/images/%.png: Chapter2/images/%.pdf
+Chapter1/images/E1_14_1.pdf: Chapter1/images/E1_14_1.tex
+	lualatex -output-directory Chapter1/images $<
+
+Chapter1/images/E1_14_1.tex: Chapter1/images/E1.14
+	./Chapter1/images/E1.14 > $@
+
+Chapter1/images/E1.14: Chapter1/E1.14.scm
+	mkdir -p Chapter1/images
+	csc $< -o $@
+
+Chapter1/images/%.png: Chapter1/images/%.pdf
 	convert -density 120 $< $@
 
-all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
+Chapter2/images/%.png: Chapter2/images/%.pdf
+	convert -density 120 $< $@
 
 $(BOOKNAME).pdf: $(BOOKNAME)_pdf.md $(PDFSOURCES)
 	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< -o $@
@@ -180,3 +195,4 @@ clean:
 	rm -f $(BOOKNAME).* $(BOOKNAME)_* bookc
 	rm -f Chapter2/images/*.png
 	rm -f Chapter2/images/*.pdf
+	rm -fr Chapter1/images
