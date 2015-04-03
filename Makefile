@@ -65,8 +65,6 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.23.scm \
 	Chapter2/E2.24.md \
 	Chapter2/E2.24.md \
-	Chapter2/images/E2_24_1.png \
-	Chapter2/images/E2_24_2.png \
 	Chapter2/E2.25.scm \
 	Chapter2/E2.26.scm \
 	Chapter2/E2.27.scm \
@@ -111,8 +109,6 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.62.scm \
 	Chapter2/E2.63.scm \
 	Chapter2/E2.64.md \
-	Chapter2/images/E2_64_1.png \
-	Chapter2/images/E2_64_2.png \
 	Chapter2/E2.65.scm \
 	Chapter2/E2.66.scm \
 	Chapter2/E2.67.scm \
@@ -139,16 +135,35 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter3/E3.3.scm \
 	Chapter3/E3.4.scm
 
+PDFSOURCES = Chapter2/images/E2_24_1.pdf \
+	Chapter2/images/E2_24_2.pdf \
+	Chapter2/images/E2_64_1.pdf \
+	Chapter2/images/E2_64_2.pdf \
+	Chapter2/images/E2_71_1.pdf \
+	Chapter2/images/E2_71_2.pdf
+
+PNGSOURCES = Chapter2/images/E2_24_1.png \
+	Chapter2/images/E2_24_2.png \
+	Chapter2/images/E2_64_1.png \
+	Chapter2/images/E2_64_2.png \
+	Chapter2/images/E2_71_1.png \
+	Chapter2/images/E2_71_2.png
+
+Chapter2/images/%.pdf: Chapter2/images/%.tex
+	pdflatex -output-directory Chapter2/images $<
+
+Chapter2/images/%.png: Chapter2/images/%.pdf
+	convert -density 120 $< $@
 
 all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
 
-$(BOOKNAME).pdf: $(BOOKNAME)_pdf.md
+$(BOOKNAME).pdf: $(BOOKNAME)_pdf.md $(PDFSOURCES)
 	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< -o $@
 
-$(BOOKNAME).html: $(BOOKNAME)_html.md
+$(BOOKNAME).html: $(BOOKNAME)_html.md $(PNGSOURCES)
 	$(PANDOC) $(ARGS) --mathjax -s $< -o $@
 
-$(BOOKNAME).epub: $(BOOKNAME)_html.md
+$(BOOKNAME).epub: $(BOOKNAME)_html.md $(PNGSOURCES)
 	$(PANDOC) $(ARGS) -t epub3 -s $< -o $@
 
 $(BOOKNAME)_html.md: TOC.json bookc $(SOURCES)
