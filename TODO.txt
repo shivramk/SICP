@@ -5,7 +5,6 @@ TODO
 1.24 - Profile the code to see why fast-prime? Is actually slower than the
        other prime function.
 2.16 - This is apparently a very difficult problem. Attempt this later.
-2.24 - Add labels to box and pointer notation (Refer to page 108 of SICP).
 
 Miscellaneous
 -------------
