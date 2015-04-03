@@ -9,6 +9,5 @@ TODO
 Miscellaneous
 -------------
 
-1. Convert remaining latex files into pandoc markdown
+1. Refer to images across all formats (pdf, epub, html)
 2. Add test cases
-3. Images take up the entire page width in latex output. Fix this
