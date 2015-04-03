@@ -4,7 +4,7 @@
 *.pdf
 *.html
 *.epub
-*.md
+sicp*.md
 *.pyc
 *.png
 bookc
