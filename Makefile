@@ -110,7 +110,9 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.61.scm \
 	Chapter2/E2.62.scm \
 	Chapter2/E2.63.scm \
-	Chapter2/E2.64.tex \
+	Chapter2/E2.64.md \
+	Chapter2/images/E2_64_1.png \
+	Chapter2/images/E2_64_2.png \
 	Chapter2/E2.65.scm \
 	Chapter2/E2.66.scm \
 	Chapter2/E2.67.scm \
@@ -140,21 +142,24 @@ SOURCES = Chapter1/E1.1.scm \
 
 all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
 
-$(BOOKNAME).pdf: $(BOOKNAME).md
-	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< -o $@
+$(BOOKNAME).pdf: $(BOOKNAME)_pdf.md
+	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< metadata.yaml -o $@
 
-$(BOOKNAME).html: $(BOOKNAME).md
-	$(PANDOC) $(ARGS) --mathjax -s $< -o $@
+$(BOOKNAME).html: $(BOOKNAME)_html.md
+	$(PANDOC) $(ARGS) --mathjax -s $< metadata.yaml -o $@
 
-$(BOOKNAME).epub: $(BOOKNAME).md
-	$(PANDOC) $(ARGS) -t epub3 -s $< -o $@
+$(BOOKNAME).epub: $(BOOKNAME)_html.md
+	$(PANDOC) $(ARGS) -t epub3 -s $< metadata.yaml -o $@
 
-$(BOOKNAME).md: TOC.json bookc $(SOURCES)
-	./bookc TOC.json $(BOOKNAME).md
+$(BOOKNAME)_html.md: TOC.json bookc $(SOURCES)
+	./bookc TOC.json html $(BOOKNAME)_html.md
+
+$(BOOKNAME)_pdf.md: TOC.json bookc $(SOURCES)
+	./bookc TOC.json pdf $(BOOKNAME)_pdf.md
 
 bookc: bookc.scm
 	csc $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f $(BOOKNAME).* bookc
+	rm -f $(BOOKNAME).* $(BOOKNAME)_* bookc

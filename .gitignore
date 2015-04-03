@@ -4,6 +4,6 @@
 *.pdf
 *.html
 *.epub
+*.md
 *.pyc
 bookc
-sicpanswers.md
