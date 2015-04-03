@@ -178,3 +178,5 @@ bookc: bookc.scm
 .PHONY: clean
 clean:
 	rm -f $(BOOKNAME).* $(BOOKNAME)_* bookc
+	rm -f Chapter2/images/*.png
+	rm -f Chapter2/images/*.pdf
