@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\begin{document}
+
+\begin{tikzpicture} [
+	level 2/.style={sibling distance=10mm}
+]
+\node {\texttt{5}}
+	child {node {\texttt{1}}
+		child[missing] {node {}}
+		child {node {\texttt{3}}}}
+	child {node {\texttt{9}}
+		child {node {\texttt{7}}}
+		child {node {\texttt{11}}}};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\begin{document}
+
+\begin{tikzpicture} [
+	level 2/.style={sibling distance=15mm},
+]
+\node {\texttt{2}}
+	child {node {\texttt{1}}}
+	child {node {\texttt{3}}};
+\end{tikzpicture}
+
+\end{document}
