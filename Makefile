@@ -120,7 +120,7 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter2/E2.69.scm \
 	Chapter2/E2.7.scm \
 	Chapter2/E2.70.scm \
-	Chapter2/E2.71.tex \
+	Chapter2/E2.71.md \
 	Chapter2/E2.72.md \
 	Chapter2/E2.73.scm \
 	Chapter2/E2.74.scm \
@@ -143,13 +143,13 @@ SOURCES = Chapter1/E1.1.scm \
 all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
 
 $(BOOKNAME).pdf: $(BOOKNAME)_pdf.md
-	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< metadata.yaml -o $@
+	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< -o $@
 
 $(BOOKNAME).html: $(BOOKNAME)_html.md
-	$(PANDOC) $(ARGS) --mathjax -s $< metadata.yaml -o $@
+	$(PANDOC) $(ARGS) --mathjax -s $< -o $@
 
 $(BOOKNAME).epub: $(BOOKNAME)_html.md
-	$(PANDOC) $(ARGS) -t epub3 -s $< metadata.yaml -o $@
+	$(PANDOC) $(ARGS) -t epub3 -s $< -o $@
 
 $(BOOKNAME)_html.md: TOC.json bookc $(SOURCES)
 	./bookc TOC.json html $(BOOKNAME)_html.md

@@ -1,34 +1,8 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass{standalone}
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning}
 \begin{document}
 
-For the purpose of illustration let the symbols be chosen from characters \texttt{A} to \texttt{Z} in descending order of the frequency. The tree for $n=5$
-\begin{center}
-\begin{tikzpicture}[
-	level 1/.style = {sibling distance=20mm},
-	every node/.style = {draw, circle, fill=black},
-	leaf/.style = {draw, circle, minimum size = 5mm, fill=none}
-]
-\node [label=left:(E D C B A) 31] {}
-	child {node [label=left:(E D C B) 15] {}
-		child {node [label=left:(E D C) 7] {}
-			child {node [label=left:(E D) 3] {}
-				child {node [leaf] [label=below:0000] {\texttt{E 1}}}
-				child {node [leaf] [label=below:0001] {\texttt{D 2}}}}
-			child {node [label=right:001] [leaf] {\texttt{C 4}}}}
-		child {node [label=right:01] [leaf] {\texttt{B 8}}}}
-	child {node [label=right:1] [leaf] {\texttt{A 16}}};
-\end{tikzpicture}
-\end{center}
-
-\bigskip For such tress with $n$ symbols the number of bits required to encode the most frequent symbol is $1$ and the number of bits required to encode the least frequent symbol is $n-1$.
-
-\bigskip See the next page for a tree a with $n=10$.
-
-\newpage
-The tree for $n=10$
-\begin{center}
 \begin{tikzpicture} [
 	level 1/.style = {sibling distance=20mm},
 	every node/.style = {draw, circle, fill=black},
@@ -54,6 +28,5 @@ The tree for $n=10$
 		child {node [leaf] [label=right:01] {\texttt{B 256}}}}
 	child {node [leaf] [label=right:1] {\texttt{A 512}}};
 \end{tikzpicture}
-\end{center}
 
 \end{document}
