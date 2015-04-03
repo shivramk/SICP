@@ -22,6 +22,7 @@
 (define us-coins2 (list 25 50 5 10 1))
 (cc 100 us-coins2) ; should be same as above as the order doesn't really matter
 
-; Why does the order of coin-values not matter?
-; The procedure cc doesn't make any assumptions about the ordering of the coin-values
-; The only assumption is that the values in coin-values are unique
+;; Why does the order of coin-values not matter?
+;;
+;; The procedure `cc` doesn't make any assumptions about the ordering of the `coin-values`.
+;; The only assumption is that the values in `coin-values` are unique.

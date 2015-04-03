@@ -1,8 +1,8 @@
-; We represent the cons pair (a, b) as n=2^a*3^b
-; This is can be done with any two numbers that are relatively prime
-; To recover the car and car we just have to keep a count
-; of times the number n can be divided by either 2 or 3
-; This works because 2 and 3 will be the only prime factors of n
+;; We represent the cons pair `(a, b)` as $n=2^a\cdot3^b$.
+;; This can be done with any two numbers that are relatively prime.
+;; To recover the car and car we just have to keep a count
+;; of times the number $n$ can be divided by either 2 or 3.
+;; This works because 2 and 3 will be the only prime factors of $n$
 
 (define (cons x y)
   (* (expt 2 x) (expt 3 y)))

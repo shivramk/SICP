@@ -42,8 +42,3 @@
 (define r2 (make-rectangle 2 5))
 (area r2) ; 10
 (perimeter r2) ; 14
-
-
-
-
-
