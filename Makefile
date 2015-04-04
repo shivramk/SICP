@@ -154,10 +154,10 @@ PNGSOURCES = Chapter2/images/E2_24_1.png \
 all: $(BOOKNAME).pdf $(BOOKNAME).html $(BOOKNAME).epub
 
 Chapter2/images/%.pdf: Chapter2/images/%.tex
-	pdflatex -output-directory Chapter2/images $<
+	pdflatex -interaction=batchmode -output-directory Chapter2/images $<
 
 Chapter1/images/E1_14_1.pdf: Chapter1/images/E1_14_1.tex
-	lualatex -output-directory Chapter1/images $<
+	lualatex -interaction=batchmode -output-directory Chapter1/images $<
 
 Chapter1/images/E1_14_1.tex: Chapter1/images/E1.14
 	./Chapter1/images/E1.14 > $@
@@ -194,5 +194,8 @@ bookc: bookc.scm
 clean:
 	rm -f $(BOOKNAME).* $(BOOKNAME)_* bookc
 	rm -f Chapter2/images/*.png
+	rm -f Chapter2/images/*.aux
+	rm -f Chapter2/images/*.gz
+	rm -f Chapter2/images/*.log
 	rm -f Chapter2/images/*.pdf
 	rm -fr Chapter1/images
