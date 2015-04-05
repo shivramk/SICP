@@ -134,7 +134,10 @@ SOURCES = Chapter1/E1.1.scm \
 	Chapter3/E3.2.scm \
 	Chapter3/E3.3.scm \
 	Chapter3/E3.4.scm \
-	Chapter3/E3.5.scm
+	Chapter3/E3.5.scm \
+	Chapter3/E3.6.scm \
+	Chapter3/E3.7.scm \
+	Chapter3/E3.8.scm
 
 PDFSOURCES = Chapter2/images/E2_24_1.pdf \
 	Chapter2/images/E2_24_2.pdf \
