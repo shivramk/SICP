@@ -204,7 +204,7 @@
 
 ;; Why does this work?
 ;; The reason this works is that we have exported a magnitude function from (install-complex-package)
-;; which can work on complex numbers. And there already a magnitude function exported from
+;; which can work on complex numbers. And there is already a magnitude function exported from
 ;; (install-rectangular-package)
 ;; 
 ;; The call tree looks like this
@@ -216,4 +216,4 @@
 ;;                  \_ (magnitude (cons 3 4)) -> 5 
 ;; 
 ;; The final magnitude call belongs to (install-rectangular-package)
-;; apply-generic gets call a couple of times
+;; apply-generic gets called a couple of times
