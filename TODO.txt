@@ -10,3 +10,4 @@ Miscellaneous
 
 1. Refer to images across all formats (pdf, epub, html)
 2. Add test cases
+3. Remove any duplicate code from 2.75-2.83. Look at 2.84 for inspiration
