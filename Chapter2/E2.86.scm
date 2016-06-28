@@ -79,6 +79,7 @@
 (define (cosine x) (apply-generic 'cosine x))
 (define (arctan x y) (apply-generic 'arctan x y))
 (define (=zero? x) (apply-generic '=zero? x))
+(define (texify x) (apply-generic 'texify x))
 
 (define (install-complex-package)
   ;; imported procedures from rectangular and polar packages
@@ -124,6 +125,10 @@
   (put 'magnitude '(complex) magnitude)
   (put 'angle '(complex) angle)
   (put 'equ? '(complex complex) equal-complex)
+  (put 'texify '(complex)
+       (lambda (x) (string-append
+                     (texify (real-part x)) " + "
+                     (texify (imag-part x)) "i")))
   (put 'tower-index '(complex) 
        (lambda (x) 3))
   (put 'project '(complex) (lambda (x) 
@@ -160,6 +165,8 @@
        (lambda (x) (tag x)))
   (put 'equ? '(integer integer)
        (lambda (x y) (= x y)))
+  (put 'texify '(integer)
+       (lambda (x) (number->string x)))
   (put 'raise '(integer)
        (lambda (x) (make-rational x 1)))
   (put 'tower-index '(integer) 
@@ -198,6 +205,8 @@
        (lambda (x) (tag x)))
   (put 'equ? '(real real)
        (lambda (x y) (= x y)))
+  (put 'texify '(real)
+       (lambda (x) (number->string x)))
   (put 'raise '(real)
        (lambda (x) (make-complex-from-real-imag x 
                                                 (make-integer 0))))
@@ -258,6 +267,12 @@
   (put 'mul '(rational rational)
        (lambda (x y) (tag (mul-rat x y))))
   (put 'equ? '(rational rational) equal-complex)
+  (put 'texify '(rational)
+       (lambda (x) (string-append "\frac{"
+                                  (number->string (numer x))
+                                  "}{"
+                                  (number->string (denom x))
+                                  "}")))
   (put 'div '(rational rational)
        (lambda (x y) (tag (div-rat x y))))
   (put '=zero? '(rational)
