@@ -78,6 +78,7 @@
 (define (sine x) (apply-generic 'sine x))
 (define (cosine x) (apply-generic 'cosine x))
 (define (arctan x y) (apply-generic 'arctan x y))
+(define (=zero? x) (apply-generic '=zero? x))
 
 (define (install-complex-package)
   ;; imported procedures from rectangular and polar packages
@@ -112,6 +113,8 @@
        (lambda (z1 z2) (tag (mul-complex z1 z2))))
   (put 'div '(complex complex)
        (lambda (z1 z2) (tag (div-complex z1 z2))))
+  (put '=zero? '(complex) 
+       (lambda (z) (zero? (magnitude z))))
   (put 'make-from-real-imag 'complex
        (lambda (x y) (tag (make-from-real-imag x y))))
   (put 'make-from-mag-ang 'complex
@@ -151,6 +154,8 @@
        (lambda (x y) (tag (* x y))))
   (put 'div '(integer integer)
        (lambda (x y) (tag (/ x y))))
+  (put '=zero? '(integer)
+       (lambda (x) (zero? x)))
   (put 'make 'integer
        (lambda (x) (tag x)))
   (put 'equ? '(integer integer)
@@ -187,6 +192,8 @@
        (lambda (x y) (tag (* x y))))
   (put 'div '(real real)
        (lambda (x y) (tag (/ x y))))
+  (put '=zero? '(real)
+       (lambda (x) (zero? x)))
   (put 'make 'real
        (lambda (x) (tag x)))
   (put 'equ? '(real real)
@@ -253,6 +260,8 @@
   (put 'equ? '(rational rational) equal-complex)
   (put 'div '(rational rational)
        (lambda (x y) (tag (div-rat x y))))
+  (put '=zero? '(rational)
+       (lambda (x) (zero? (numer x))))
   (put 'make 'rational
        (lambda (n d) (tag (make-rat n d))))
   (put 'raise '(rational)
