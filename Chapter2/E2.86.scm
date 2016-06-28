@@ -80,6 +80,7 @@
 (define (arctan x y) (apply-generic 'arctan x y))
 (define (=zero? x) (apply-generic '=zero? x))
 (define (texify x) (apply-generic 'texify x))
+(define (negate x) (apply-generic 'negate x)) ; Needed by 2.88
 
 (define (install-complex-package)
   ;; imported procedures from rectangular and polar packages
@@ -116,6 +117,9 @@
        (lambda (z1 z2) (tag (div-complex z1 z2))))
   (put '=zero? '(complex) 
        (lambda (z) (zero? (magnitude z))))
+  (put 'negate '(complex)
+       (lambda (z) (tag (make-from-real-imag (negate (real-part z))
+                                             (negate (imag-part z))))))
   (put 'make-from-real-imag 'complex
        (lambda (x y) (tag (make-from-real-imag x y))))
   (put 'make-from-mag-ang 'complex
@@ -161,6 +165,8 @@
        (lambda (x y) (tag (/ x y))))
   (put '=zero? '(integer)
        (lambda (x) (zero? x)))
+  (put 'negate '(integer)
+       (lambda (x) (tag (- x))))
   (put 'make 'integer
        (lambda (x) (tag x)))
   (put 'equ? '(integer integer)
@@ -201,6 +207,8 @@
        (lambda (x y) (tag (/ x y))))
   (put '=zero? '(real)
        (lambda (x) (zero? x)))
+  (put 'negate '(real)
+       (lambda (x) (tag (- x))))
   (put 'make 'real
        (lambda (x) (tag x)))
   (put 'equ? '(real real)
@@ -277,6 +285,8 @@
        (lambda (x y) (tag (div-rat x y))))
   (put '=zero? '(rational)
        (lambda (x) (zero? (numer x))))
+  (put 'negate '(rational)
+       (lambda (x) (tag (make-rat (- (numer x)) (denom x)))))
   (put 'make 'rational
        (lambda (n d) (tag (make-rat n d))))
   (put 'raise '(rational)
@@ -288,9 +298,9 @@
                                 (inexact->exact 
                                   (round (/ (numer x) (denom x)))))))
   (put 'square '(rational)
-       (lambda (x) (make-rat
-                     (* (numer x) (numer x))
-                     (* (denom x) (denom x)))))
+       (lambda (x) (tag (make-rat 
+                          (* (numer x) (numer x)) 
+                          (* (denom x) (denom x))))))
   (put 'square-root '(rational)
        (lambda (x) (make-real (sqrt (real-value x)))))
   (put 'sine '(rational)
