@@ -48,7 +48,7 @@
   (define (order term) (car term)) 
   (define (coeff term) (cadr term))
 
-  (define (=zero-poly? poly) (null? poly))
+  (define (=zero-poly? poly) (empty-termlist? (term-list poly)))
 
   (define (adjoin-term term term-list) 
     (if (=zero? (coeff term))
@@ -69,18 +69,18 @@
     (define (plus? terms)
       (if (null? (cdr terms)) "" " + "))
     (define (print-poly var terms)
-      (if (null? terms) ""
-        (let ((order (order (car terms)))
-              (coeff (coeff (car terms))))
+      (if (empty-termlist? terms) ""
+        (let ((order (order (first-term terms)))
+              (coeff (coeff (first-term terms))))
           (if (eq? (type-tag coeff) 'polynomial)
             (string-append "(" (texify coeff) ")"
                            (print-var-power var order)
                            (plus? terms)
-                           (print-poly var (cdr terms)))
+                           (print-poly var (rest-terms terms)))
             (string-append (texify coeff)
                            (print-var-power var order)
                            (plus? terms)
-                           (print-poly var (cdr terms)))))))
+                           (print-poly var (rest-terms terms)))))))
     (print-poly (variable x) (term-list x)))
 
   (define (add-terms L1 L2)
