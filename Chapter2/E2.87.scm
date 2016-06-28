@@ -60,6 +60,29 @@
   (define (empty-termlist? term-list) (null? term-list)) 
   (define (make-term order coeff) (list order coeff))
 
+  (define (texify-poly x)
+    (define (print-var-power var power)
+      (cond ((= power 0) "")
+            ((= power 1) (symbol->string var))
+            (else (string-append (symbol->string var) "^" 
+                                 (number->string power)))))
+    (define (plus? terms)
+      (if (null? (cdr terms)) "" " + "))
+    (define (print-poly var terms)
+      (if (null? terms) ""
+        (let ((order (order (car terms)))
+              (coeff (coeff (car terms))))
+          (if (eq? (type-tag coeff) 'polynomial)
+            (string-append "(" (texify coeff) ")"
+                           (print-var-power var order)
+                           (plus? terms)
+                           (print-poly var (cdr terms)))
+            (string-append (texify coeff)
+                           (print-var-power var order)
+                           (plus? terms)
+                           (print-poly var (cdr terms)))))))
+    (print-poly (variable x) (term-list x)))
+
   (define (add-terms L1 L2)
     (cond ((empty-termlist? L1) L2)
           ((empty-termlist? L2) L1) 
@@ -111,6 +134,7 @@
        (lambda (p1 p2) (tag (add-poly p1 p2))))
   (put 'mul '(polynomial polynomial)
        (lambda (p1 p2) (tag (mul-poly p1 p2)))) 
+  (put 'texify '(polynomial) texify-poly)
   (put '=zero? '(polynomial) =zero-poly?)
   (put 'make 'polynomial
        (lambda (var terms) (tag (make-poly var terms)))) 
@@ -135,5 +159,5 @@
 ; Polynomial whose coefficients that are themselves polynomials
 (define y1 (make-polynomial 'y (list (list 1 x2) (list 0 x1))))
 (define y2 (make-polynomial 'y (list (list 1 x3) (list 0 x2))))
-(add y1 y2)
-(mul y1 y2)
+(define o1 (add y1 y2))
+(define o2 (mul y1 y2))
