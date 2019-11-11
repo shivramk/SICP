@@ -177,7 +177,7 @@ Chapter2/images/%.png: Chapter2/images/%.pdf
 	convert -density 120 $< $@
 
 $(BOOKNAME).pdf: $(BOOKNAME)_pdf.md $(PDFSOURCES)
-	$(PANDOC) $(ARGS) --toc --chapters -V geometry:margin=1in -s $< -o $@
+	$(PANDOC) $(ARGS) --toc  --top-level-division=chapter -V geometry:margin=1in -s $< -o $@
 
 $(BOOKNAME).html: $(BOOKNAME)_html.md $(PNGSOURCES)
 	$(PANDOC) $(ARGS) --mathjax -s $< -o $@

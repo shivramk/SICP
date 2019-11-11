@@ -4,6 +4,8 @@
 ;; 
 ;; #### The following program was used to generate the above tree
 
+(import (chicken format))
+
 (define (cc amount kinds-of-coins) 
   (printf "\\documentclass[tikz,border=10pt]{standalone}
           \\usetikzlibrary{graphdrawing}

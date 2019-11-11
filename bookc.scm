@@ -1,8 +1,12 @@
-(use json)
-(use extras)
-(use srfi-13)
-(use posix)
-(use irregex)
+(import json)
+(import srfi-13)
+(import (chicken process-context))
+(import (chicken format))
+(import (chicken io))
+(import (chicken file))
+(import (chicken pathname))
+(import (chicken string))
+(import (chicken irregex))
 
 ;;; Utility methods
 (define (get-key vec key)
